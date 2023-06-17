@@ -16,19 +16,19 @@ class ShowtimeViewSet(generics.ListAPIView):
 
 
 class BookingViewSet(generics.CreateAPIView):
-    serializer_class = ShowtimeSerializer
+    serializer_class = BookingSerializer
 
     def post(self, request, *args, **kwargs):
-        showtime_id = request.POST.get('id')
+        showtime_id = request.POST.get('showtime_id')
         count = request.POST.get('count')
         print(showtime_id, count)
         if count and showtime_id:
-            for i in range(count):
-                try:
-                    showtime = Showtime.objects.filter(name=showtime_id)
-                except Exception:
-                    return response.Response('', '505')
-                booking = Booking(showtime=showtime)
-                booking.save()
+            try:
+                showtime = Showtime.objects.get(id=showtime_id)
+            except Exception:
+                return response.Response('', '505')
+            booking = Booking(showtime_id=showtime.id, count=count)
+            booking.save()
+            return response.Response('', '200')
         else:
             return response.Response('', '505')

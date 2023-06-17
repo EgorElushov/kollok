@@ -23,5 +23,5 @@ class Showtime(models.Model):
 
 
 class Booking(models.Model):
-    showtime = models.OneToOneField(Showtime, on_delete=models.CASCADE)
+    showtime_id = models.IntegerField(default=1, validators=[MinValueValidator(0)])
     count = models.IntegerField(default=1, validators=[MinValueValidator(0)])

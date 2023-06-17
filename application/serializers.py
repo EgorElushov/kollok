@@ -18,4 +18,4 @@ class ShowtimeSerializer(serializers.HyperlinkedModelSerializer):
 class BookingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Booking
-        fields = ('showtime', 'count')
+        fields = ('showtime_id', 'count')
