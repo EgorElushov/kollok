@@ -23,5 +23,8 @@ class Showtime(models.Model):
 
 
 class Booking(models.Model):
-    showtime_id = models.IntegerField(default=1, validators=[MinValueValidator(0)])
+    showtime_id = models.IntegerField(
+        default=1,
+        validators=[MinValueValidator(0)]
+    )
     count = models.IntegerField(default=1, validators=[MinValueValidator(0)])
