@@ -20,7 +20,6 @@ from application.views import MovieViewSet, ShowtimeViewSet, BookingViewSet
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('movies/', MovieViewSet.as_view()),
     path('showtimes/', ShowtimeViewSet.as_view()),
     path('tickets/', BookingViewSet.as_view()),
